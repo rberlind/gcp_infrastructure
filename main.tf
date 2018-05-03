@@ -21,7 +21,6 @@ provider "google" {
 variable "compute_instance_count" {}
 variable "compute_instance_disk_image" {}
 variable "compute_instance_disk_size" {}
-variable "compute_instance_disk_type" {}
 variable "compute_instance_machine_type" {}
 variable "compute_instance_region" {}
 variable "compute_instance_startup_script" {}
@@ -38,7 +37,6 @@ module "compute_instance" {
   count = "${var.compute_instance_count}"
   disk_image = "${var.compute_instance_disk_image}"
   disk_size = "${var.compute_instance_disk_size}"
-  disk_type = "${var.compute_instance_disk_type}"
   machine_type = "${var.compute_instance_machine_type}"
   name_prefix = "citi-demo"
   region = "${var.compute_instance_region}"
