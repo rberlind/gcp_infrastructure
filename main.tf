@@ -10,6 +10,12 @@ variable "gcp_project" {
   description = "GCP project name"
 }
 
+provider "google" {
+  credentials = "${var.gcp_credentials}"
+  project     = "${var.gcp_project}"
+  region      = "${var.compute_instance_region}"
+}
+
 //--------------------------------------------------------------------
 // Variables
 variable "compute_instance_count" {}
@@ -18,12 +24,6 @@ variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
 variable "compute_instance_region" {}
 variable "compute_instance_startup_script" {}
-
-provider "google" {
-  credentials = "${var.gcp_credentials}"
-  project     = "${var.gcp_project}"
-  region      = "${var.compute_instance_region}"
-}
 
 //--------------------------------------------------------------------
 // Modules
