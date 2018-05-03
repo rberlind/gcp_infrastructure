@@ -18,7 +18,6 @@ variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
 variable "compute_instance_region" {}
 variable "compute_instance_startup_script" {}
-variable "network_firewall_target_tags" {}
 variable "network_subnet_description" {}
 variable "network_description" {}
 
@@ -47,7 +46,7 @@ module "compute_instance" {
 
 module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
-  version = "0.1.4"
+  version = "0.1.5"
 
   name = "allow-80"
   network = "${module.network.self_link}"
@@ -55,7 +54,6 @@ module "network_firewall" {
   priority = "100"
   protocol = "TCP"
   source_ranges = ["0.0.0.0/0"]
-  target_tags = ["${var.network_firewall_target_tags}"]
 }
 
 module "network_subnet" {
