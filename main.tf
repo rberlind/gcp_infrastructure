@@ -10,12 +10,6 @@ variable "gcp_project" {
   description = "GCP project name"
 }
 
-variable "gcp_region" {
-  description = "GCP region, e.g. us-east1"
-  default = "us-east1"
-}
-
-
 //--------------------------------------------------------------------
 // Variables
 variable "compute_instance_count" {}
@@ -30,7 +24,7 @@ variable "network_description" {}
 provider "google" {
   credentials = "${var.gcp_credentials}"
   project     = "${var.gcp_project}"
-  region      = "${var.gcp_region}"
+  region      = "${var.compute_instance_region}"
 }
 
 //--------------------------------------------------------------------
