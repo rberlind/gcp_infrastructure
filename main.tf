@@ -45,7 +45,7 @@ module "compute_instance" {
 
 module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
-  version = "0.1.3"
+  version = "0.1.4"
 
   name = "allow-80"
   network = "${module.network.self_link}"
