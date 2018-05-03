@@ -45,12 +45,12 @@ module "compute_instance" {
 
 module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
-  version = "0.1.2"
+  version = "0.1.3"
 
   name = "allow_80"
   network = "${module.network.self_link}"
   ports = [80]
-  priority = "Allow Port 80 ingress"
+  priority = "100"
   protocol = "TCP"
   source_ranges = ["0.0.0.0/0"]
   target_tags = ["${var.network_firewall_target_tags}"]
