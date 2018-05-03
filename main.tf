@@ -60,7 +60,7 @@ module "network_subnet" {
   version = "0.1.2"
 
   description = "citi-demo subnet"
-  ip_cidr_range = "150.50.0.0/16"
+  ip_cidr_range = "172.16.0.0/16"
   name = "citi-demo-subnet"
   vpc = "${module.network.self_link}"
 }
