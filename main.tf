@@ -74,3 +74,23 @@ module "network" {
   description = "${var.network_description}"
   name = "citi-demo"
 }
+  
+output "network_name" {
+  value = "${module.network.name}"
+}
+  
+output "network_gateway_ipv4" {
+  value = "${module.network_subnet.gateway_ipv4}"
+}
+  
+output "subnet_gateway_address" {
+  value = "${module.network_subnet.gateway_address}"
+} 
+  
+output "firewall_self_link" {
+  value = "${module.network_firewall.self_link}"
+}
+  
+output "compute_instance_addresses" {
+  value = "${module.compute_instance.addresses}"
+}  
