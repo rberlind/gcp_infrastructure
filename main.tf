@@ -79,10 +79,6 @@ output "network_name" {
   value = "${module.network.name}"
 }
   
-output "network_gateway_ipv4" {
-  value = "${module.network.gateway_ipv4}"
-}
-  
 output "subnet_gateway_address" {
   value = "${module.network_subnet.gateway_address}"
 } 
