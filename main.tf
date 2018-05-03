@@ -47,7 +47,7 @@ module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
   version = "0.1.3"
 
-  name = "allow_80"
+  name = "allow-80"
   network = "${module.network.self_link}"
   ports = [80]
   priority = "100"
