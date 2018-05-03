@@ -50,7 +50,7 @@ module "network_firewall" {
   version = "0.1.5"
 
   description = "Citi Demo Firewall Rule"
-  name = "allow-80-for-apache"
+  name = "allow-80"
   network = "${module.network.self_link}"
   ports = [80]
   priority = 100
