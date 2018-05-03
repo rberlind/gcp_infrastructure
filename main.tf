@@ -17,6 +17,7 @@ variable "compute_instance_disk_image" {}
 variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
 variable "compute_instance_region" {}
+variable "compute_instance_startup_script" {}
 variable "network_firewall_target_tags" {}
 variable "network_subnet_description" {}
 variable "network_description" {}
@@ -31,7 +32,7 @@ provider "google" {
 // Modules
 module "compute_instance" {
   source  = "app.terraform.io/RogerBerlind/compute-instance/google"
-  version = "0.1.1"
+  version = "0.1.2"
 
   count = "${var.compute_instance_count}"
   disk_image = "${var.compute_instance_disk_image}"
@@ -41,6 +42,7 @@ module "compute_instance" {
   region = "${var.compute_instance_region}"
   subnetwork = "${module.network_subnet.self_link}"
   user_data = "echo hello"
+  startup_script = "${var.startup_script}"
 }
 
 module "network_firewall" {
