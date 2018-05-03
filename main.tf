@@ -52,7 +52,7 @@ module "network_firewall" {
   ports = [80]
   priority = "Allow Port 80 ingress"
   protocol = "TCP"
-  source_ranges = "0.0.0.0/0"
+  source_ranges = ["0.0.0.0/0"]
   target_tags = "${var.network_firewall_target_tags}"
 }
 
