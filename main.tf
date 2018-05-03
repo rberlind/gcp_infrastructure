@@ -27,6 +27,12 @@ variable "network_firewall_target_tags" {}
 variable "network_subnet_description" {}
 variable "network_description" {}
 
+provider "google" {
+  credentials = "${var.gcp_credentials}"
+  project     = "${var.gcp_project}"
+  region      = "${var.gcp_region}"
+}
+
 //--------------------------------------------------------------------
 // Modules
 module "compute_instance" {
