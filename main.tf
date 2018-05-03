@@ -42,7 +42,7 @@ module "compute_instance" {
   region = "${var.compute_instance_region}"
   subnetwork = "${module.network_subnet.self_link}"
   user_data = "echo hello"
-  startup_script = "${var.startup_script}"
+  startup_script = "${var.compute_instance_startup_script}"
 }
 
 module "network_firewall" {
