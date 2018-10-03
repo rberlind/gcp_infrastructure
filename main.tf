@@ -51,7 +51,7 @@ module "network_firewall" {
 
   description = "Demo Firewall"
   name = "demo-allow-80"
-  network = "${module.network.self_link}"
+  network = "${module.network.name}"
   ports = [80]
   protocol = "TCP"
   source_ranges = ["0.0.0.0/0"]
