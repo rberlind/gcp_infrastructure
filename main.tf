@@ -10,10 +10,15 @@ variable "gcp_project" {
   description = "GCP project name"
 }
 
+variable "gcp_region" {
+ description = "GCP region"
+ default = "us-east1"
+}
+
 provider "google" {
   credentials = "${var.gcp_credentials}"
   project     = "${var.gcp_project}"
-  region      = "${var.compute_instance_region}"
+  region      = "${var.gcp_region}"
 }
 
 //--------------------------------------------------------------------
@@ -22,27 +27,20 @@ variable "compute_instance_count" {}
 variable "compute_instance_disk_image" {}
 variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
-variable "compute_instance_region" {}
-variable "compute_instance_startup_script" {}
-
-
 
 
 //--------------------------------------------------------------------
 // Modules
 module "compute_instance" {
   source  = "app.terraform.io/RogerBerlind/compute-instance/google"
-  version = "0.1.2"
+  version = "0.1.3"
 
   count = "${var.compute_instance_count}"
   disk_image = "${var.compute_instance_disk_image}"
   disk_size = "${var.compute_instance_disk_size}"
   machine_type = "${var.compute_instance_machine_type}"
   name_prefix = "citi-demo"
-  region = "${var.compute_instance_region}"
-  startup_script = "${var.compute_instance_startup_script}"
   subnetwork = "${module.network_subnet.self_link}"
-  user_data = "echo hello"
 }
 
 module "network_firewall" {
