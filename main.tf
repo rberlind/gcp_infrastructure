@@ -29,6 +29,8 @@ variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
 
 
+
+
 //--------------------------------------------------------------------
 // Modules
 module "compute_instance" {
@@ -48,12 +50,11 @@ module "network_firewall" {
   version = "0.1.5"
 
   description = "Citi Demo Firewall Rule"
-  name = "allow-80"
+  name = "citi-demo-firewall-rule"
   network = "${module.network.self_link}"
   ports = [80]
-  priority = 100
   protocol = "TCP"
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = "0.0.0.0/0"
 }
 
 module "network_subnet" {
@@ -61,7 +62,7 @@ module "network_subnet" {
   version = "0.1.2"
 
   description = "Citi Demo Subnet"
-  ip_cidr_range = "172.16.0.0/16"
+  ip_cidr_range = "172.16.0.0./16"
   name = "citi-demo-subnet"
   vpc = "${module.network.self_link}"
 }
