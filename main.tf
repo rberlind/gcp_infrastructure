@@ -54,7 +54,7 @@ module "network_firewall" {
   network = "${module.network.self_link}"
   ports = [80]
   protocol = "TCP"
-  source_ranges = "0.0.0.0/0"
+  source_ranges = "[0.0.0.0/0]"
 }
 
 module "network_subnet" {
