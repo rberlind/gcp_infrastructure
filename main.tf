@@ -32,9 +32,6 @@ variable "compute_instance_disk_image" {}
 variable "compute_instance_disk_size" {}
 variable "compute_instance_machine_type" {}
 
-
-
-
 //--------------------------------------------------------------------
 // Modules
 module "compute_instance" {
@@ -45,17 +42,17 @@ module "compute_instance" {
   disk_image = "${var.compute_instance_disk_image}"
   disk_size = "${var.compute_instance_disk_size}"
   machine_type = "${var.compute_instance_machine_type}"
-  name_prefix = "demo"
-  subnetwork = "${module.network_subnet.self_link}"
+  name_prefix = "citi-demo"
+  subnetwork = "$(module.network_subnet.self_link}"
 }
 
 module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
   version = "0.1.5"
 
-  description = "demo-firewall-rule"
-  name = "allow-80"
-  network = "${module.network.name}"
+  description = "Citi Firewall Rule"
+  name = "citi-firewall-allow-80"
+  network = "$(module.network.name}"
   ports = [80]
   protocol = "TCP"
   source_ranges = ["0.0.0.0/0"]
@@ -65,8 +62,9 @@ module "network_subnet" {
   source  = "app.terraform.io/RogerBerlind/network-subnet/google"
   version = "0.1.2"
 
+  description = "Citi Subnet"
   ip_cidr_range = "172.16.0.0/16"
-  name = "demo-subnet"
+  name = "citi-subnet"
   vpc = "${module.network.self_link}"
 }
 
@@ -75,10 +73,9 @@ module "network" {
   version = "0.1.3"
 
   auto_create_subnetworks = "false"
-  description = "Demo Network"
-  name = "demo-network"
+  description = "Citi Network"
+  name = "citi-network"
 }
-
 
 // -------------------------------------------------------------------
   
