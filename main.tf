@@ -66,7 +66,7 @@ module "network_subnet" {
   version = "0.1.2"
 
   description = "Demo Subnet"
-  ip_cidr_range = "172.16.0.0/0"
+  ip_cidr_range = "172.16.0.0/16"
   name = "demo-subnet"
   vpc = "${module.network.self_link}"
 }
