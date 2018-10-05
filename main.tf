@@ -52,7 +52,7 @@ module "network_firewall" {
 
   description = "Citi Firewall Rule"
   name = "citi-firewall-allow-80"
-  network = "$(module.network.self_link}"
+  network = "${module.network.self_link}"
   ports = [80]
   protocol = "TCP"
   source_ranges = ["0.0.0.0/0"]
