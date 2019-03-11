@@ -53,7 +53,7 @@ module "network_firewall" {
   source  = "app.terraform.io/RogerBerlind/network-firewall/google"
   version = "0.1.5"
 
-  description = "Demo firewall rule"
+  description = "Demo firewall rule allow 80"
   name = "allow-80"
   network = "${module.network.name}"
   ports = [80]
