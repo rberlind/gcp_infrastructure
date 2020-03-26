@@ -53,7 +53,7 @@ module "network_firewall" {
   ports = [80]
   priority = 101
   protocol = "TCP"
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["0.0.0.0/0", "172.16.0.0/16"]
 }
 
 module "network_subnet" {
